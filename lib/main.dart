@@ -17,7 +17,7 @@ void main() async {
   await RegisterServics();
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: true,
       builder: (context) => MyApp(), // Wrap your app
     ),
   );
