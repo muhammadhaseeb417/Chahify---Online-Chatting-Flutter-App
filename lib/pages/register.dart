@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _loginForm() {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height * 0.63,
+      height: MediaQuery.sizeOf(context).height * 0.59,
       padding: EdgeInsets.symmetric(
         vertical: MediaQuery.sizeOf(context).height * 0.05,
       ),

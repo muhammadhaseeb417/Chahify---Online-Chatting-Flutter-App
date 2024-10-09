@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +7,7 @@ import 'package:recipe_flutter_app/servics/auth_service.dart';
 import 'package:recipe_flutter_app/servics/navigation_service.dart';
 import 'package:recipe_flutter_app/utils.dart';
 import 'firebase_options.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await RegisterServics();
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -38,6 +45,8 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
       navigatorKey: _navigationService.navigationKey,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       routes: _navigationService.routes,
       initialRoute: _authService.user != null ? "/home" : "/login",

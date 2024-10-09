@@ -92,7 +92,7 @@ class _SigninState extends State<Signin> {
   Widget _loginForm() {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height * 0.4,
+      height: MediaQuery.sizeOf(context).height * 0.35,
       padding: EdgeInsets.symmetric(
         vertical: MediaQuery.sizeOf(context).height * 0.05,
       ),
